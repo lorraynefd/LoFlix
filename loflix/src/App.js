@@ -28,14 +28,14 @@ export default () => {
   }, []);
   useEffect(() => {
     const scrpuListener = () => {
-      if(window.scrollY > 10){
+      if (window.scrollY > 10) {
         setBlackHeader(true);
-      }else{
+      } else {
         setBlackHeader(false);
       }
     }
-    window.addEventListener('scroll',scrpuListener);
-    return () =>{
+    window.addEventListener('scroll', scrpuListener);
+    return () => {
       window.removeEventListener('scroll', scrpuListener);
     }
   }, [])
@@ -53,10 +53,15 @@ export default () => {
         ))}
       </section>
       <footer>
-        Feito com amor pela lorrayne <br/>
-        Direitos de imagens para a Netflix <br/>
+        Feito com amor pela lorrayne <br />
+        Direitos de imagens para a Netflix <br />
         Dados pegos no site Themoviedb.org
       </footer>
+      {movieList.length <= 0 &&
+        <div className="loading">
+          <img src="https://i.pinimg.com/originals/f9/0f/76/f90f7689233948005f465d98ead56d44.gif" alt="Carregando" />
+        </div>
+      }
     </div>
   );
 }
